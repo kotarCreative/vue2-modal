@@ -5,7 +5,7 @@ A vue.js component for creating modals. Create modals and fill them with whateve
 Vue modal is built as a vue plugin. It can be initialized just as the Vue documentation states.
 
 ```javascript
-import VueModal from "vue2/modal/location";
+import VueModal from "vue2-modal";
 
 Vue.use(VueModal);
 ```
