@@ -67,7 +67,7 @@
 
         watch: {
             modals() {
-                this.show();
+                this.showModal();
             }
         },
 
