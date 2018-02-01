@@ -5,7 +5,7 @@
             class="v-modal-mask"
             v-if="show">
             <div class="v-modal-wrapper" :style="theme">
-                <div @click.stop class="v-modal-content" :class="size" :id="'v-modal-' + modals.length">
+                <div @click.stop class="v-modal-content" :class="size" :id="id" :style="style">
                     <div class="v-modal-panel">
                         <div class="v-modal-heading">
                             <div class="panel-title"><slot name="header"></slot></div>
@@ -37,12 +37,12 @@
             },
 
             width: {
-                type: Number,
+                type: String,
                 required: false
             },
 
             height: {
-                type: Number,
+                type: String,
                 required: false
             },
 
@@ -61,7 +61,8 @@
             return {
                 modals: null,
                 show: false,
-                id: null
+                id: null,
+                style: ''
             }
         },
 
@@ -93,19 +94,20 @@
             }
         },
 
+        created() {
+            this.modals = this.$modals.shown();
+
+            this.$modals.mount(this.name);
+            this.id = 'v-modal-' + this.$modals.all().indexOf(this.name);
+        },
+
         mounted() {
-            this.modals = this.$modals.all();
-
-            this.id = 'v-modal-' + this.modals.length;
-
-            var modal = document.getElementById(this.id);
-
             if(this.width) {
-                modal.style.width = this.width + 'px';
+                this.style = this.style + 'width: ' + this.width + 'px;';
             }
 
             if(this.height) {
-                modal.style.height = this.height + 'px';
+                this.style = this.style + 'height: ' + this.height + 'px;';
             }
         }
     }
@@ -134,11 +136,15 @@
             width: 50%;
             background-color: #fff;
 
-            &.large {
+            &.lg {
                 width: 70%;
             }
 
-            &.small {
+            &.md {
+                width: 50%;
+            }
+
+            &.sm {
                 width: 25%;
             }
 

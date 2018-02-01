@@ -6,7 +6,19 @@ export default {
 
         Vue.prototype.$modals = {
 
-            modals: [],
+            /**
+             * Modals that are currently shown.
+             *
+             * @var array
+             */
+            shownModals: [],
+
+            /**
+             * All modals loaded to the view app.
+             *
+             * @var array
+             */
+            allModals: [],
 
             /**
              * Shows a named modal.
@@ -16,26 +28,33 @@ export default {
              * @return void
              */
             show(modalName) {
-                this.modals.indexOf(modalName) == -1 ? this.modals.push(modalName) : null;
+                this.shownModals.indexOf(modalName) == -1 ? this.shownModals.push(modalName) : null;
                 if(options && options.logging) {
-                    console.log('show modal: ' + modalName);
-                    console.log('all modals: ', this.modals);
+                    console.log('Show modal: ' + modalName);
+                    console.log('All modals showing: ', this.shownModals);
                 }
             },
 
             /**
              * Hides a named modal.
              *
-             * @param string modalName
+             * @param string| array modalNames
              *
              * @return void
              */
-            hide(modalName) {
-                var ind = this.modals.indexOf(modalName);
-                this.modals.splice(ind, 1);
+            hide(modalNames) {
+                if (modalNames.constructor === Array) {
+                    modalNames.forEach(modalName => {
+                        var ind = this.shownModals.indexOf(modalName);
+                        this.modals.splice(ind, 1);
+                    });
+                } else {
+                    var ind = this.shownModals.indexOf(modalNames);
+                    this.shownModals.splice(ind, 1);
+                }
                 if(options && options.logging) {
-                    console.log('removed modal: ' + modalName);
-                    console.log('all modals: ', this.modals);
+                    console.log('Removed modal: ' + modalNames);
+                    console.log('All shown modals: ', this.shownModals);
                 }
             },
 
@@ -47,7 +66,7 @@ export default {
              * @return boolean
              */
             isActive(modalName) {
-                return this.modals.indexOf(modalName) > -1;
+                return this.shownModals.indexOf(modalName) > -1;
             },
 
             /**
@@ -55,8 +74,30 @@ export default {
              *
              * @return array
              */
+            shown() {
+                return this.shownModals;
+            },
+
+            /**
+             * Return all modals bound to the current Vue context.
+             *
+             * @return array
+             */
             all() {
-                return this.modals;
+                return this.allModals;
+            },
+
+            /**
+             * Mount a new modal to the state.
+             *
+             * @return null
+             */
+            mount(name) {
+                if (this.allModals.indexOf(name) == -1) {
+                    this.allModals.push(name);
+                } else if (options && options.logging) {
+                    console.log('The modal name "' + name + '" has already been mounted.');
+                }
             }
 
         }

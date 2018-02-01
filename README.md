@@ -31,7 +31,7 @@ Vue modals contains a very simple API for interacting with modals.
 #### Styling
 There are some built in stylings that can be changed or a manual theme can also be applied.
 There are three props which are used to change the size of the modals themselves.
-1. size
+1. size (sm, md, lg)
 2. width
 3. height
 
