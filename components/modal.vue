@@ -8,7 +8,7 @@
                 <div @click.stop class="v-modal-content" :class="size" :id="id" :style="style">
                     <div class="v-modal-panel">
                         <div class="v-modal-heading">
-                            <div class="panel-title"><slot name="header"></slot></div>
+                            <div class="v-modal-title"><slot name="header"></slot></div>
                             <span class="close-btn" @click="close">&times;</span>
                         </div>
                         <div class="v-modal-body">
@@ -115,26 +115,26 @@
 
 <style lang="scss" scoped>
     .v-modal-mask {
-        position: fixed;
-        z-index: 9998;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, .5);
-        transition: opacity .3s ease;
-        overflow-y: scroll;
+        position:           fixed;
+        z-index:            9998;
+        top:                0;
+        left:               0;
+        width:              100%;
+        height:             100%;
+        background-color:   rgba(0, 0, 0, .5);
+        transition:         opacity .3s ease;
+        overflow-y:         scroll;
     }
 
     .v-modal-wrapper {
-        width: 100%;
+        width:  100%;
         height: 100%;
 
         .v-modal-content {
-            margin: 0px auto;
-            margin-top: 5%;
-            width: 50%;
-            background-color: #fff;
+            margin:             0px auto;
+            margin-top:         5%;
+            width:              50%;
+            background-color:   #fff;
 
             &.lg {
                 width: 70%;
@@ -151,12 +151,17 @@
             transition: all 0.5s ease;
 
             .v-modal-heading {
-                position: relative;
-                overflow: hidden;
-                padding: 20px;
+                position:   relative;
+                overflow:   hidden;
+                padding:    20px;
 
                 .v-modal-title {
                     display: inline;
+
+                    h1, h2, h3, h4, h5 {
+                        padding:    0px;
+                        margin:     0px;
+                    }
                 }
 
                 .close-btn {
@@ -169,8 +174,8 @@
             }
 
             .v-modal-body {
-                padding: 60px;
-                padding-top: 0px;
+                padding:        60px;
+                padding-top:    0px;
             }
         }
     }
@@ -186,11 +191,11 @@
     }
 
     .v-modal-enter .v-modal-content, .v-modal-leave-active .v-modal-content {
-        web-kit-transform: scale(2);
-        moz-transform: scale(2);
-        ms-transform: scale(2);
-        o-transform: scale(2);
-        transform: scale(2);
+        web-kit-transform:  scale(2);
+        moz-transform:      scale(2);
+        ms-transform:       scale(2);
+        o-transform:        scale(2);
+        transform:          scale(2);
     }
 
 </style>

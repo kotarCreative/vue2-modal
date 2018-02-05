@@ -17,7 +17,7 @@ A modal can be created by giving it a name and a function to run when it's close
 Modals also contain a slot for the title section. Here is a very simple modal.
 ```HTML
 <vue-modal :on-close="closeModal" name="my-modal">
-    <h2 slot="title">Hello World</h2>
+    <h2 slot="header">Hello World</h2>
     <p>This modal will do stuff.</p>
 </vue-modal>
 ```
