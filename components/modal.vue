@@ -113,7 +113,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .v-modal-mask {
         position:           fixed;
         z-index:            9998;
