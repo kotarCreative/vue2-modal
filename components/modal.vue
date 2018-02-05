@@ -156,7 +156,7 @@
                 padding:    20px;
 
                 .v-modal-title {
-                    display: inline;
+                    display: inline-block;
 
                     h1, h2, h3, h4, h5 {
                         padding:    0px;
