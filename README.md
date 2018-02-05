@@ -37,5 +37,10 @@ There are three props which are used to change the size of the modals themselves
 
 To apply custom themes simply create a string of standard css and pass it into the `theme` prop.
 
+##### Hooks
+There are life cycle hooks that can be utilized to run actions at different points in the modals life.
+- onClose: Runs right before the close modal event is emitted
+- onShow: Runs after the modal have been rerendered to the screen.
+
 ## License
 This project is covered under the MIT License. Feel free to use it wherever you like.

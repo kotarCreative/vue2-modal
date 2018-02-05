@@ -53,7 +53,12 @@
 
             onClose: {
                 type: Function,
-                required: true
+                required: false
+            },
+
+            onShow: {
+                type: Function,
+                required: false
             }
         },
 
@@ -75,13 +80,14 @@
         methods: {
             close () {
                 this.$modals.hide(this.name);
-                this.onClose();
+                if (this.onClose) { this.onClose() }
                 this.$emit('close-modal', this.name);
             },
 
             showModal() {
                 this.show = this.$modals.isActive(this.name);
                 this.centerModal();
+                if (this.onShow) { this.onShow() }
             },
 
             centerModal() {
