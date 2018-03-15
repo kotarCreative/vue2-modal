@@ -79,6 +79,7 @@
 
         methods: {
             close () {
+                document.body.classList.remove('v-modal-overflow-hidden');
                 this.$modals.hide(this.name);
                 if (this.onClose) { this.onClose() }
                 this.$emit('close-modal', this.name);
@@ -86,14 +87,18 @@
 
             showModal() {
                 this.show = this.$modals.isActive(this.name);
-                this.centerModal();
-                if (this.onShow) { this.onShow() }
+                if (this.show) {
+                    document.body.classList.add('v-modal-overflow-hidden');
+
+                    this.centerModal();
+                    if (this.onShow) { this.onShow() }
+                }
             },
 
             centerModal() {
                 var modal = document.getElementById(this.id);
 
-                if(modal) {
+                if (modal) {
                     var margin = (window.innerWidth - modal.offsetWidth) / 2;
                     modal.style.marginLeft = margin + 'px';
                 }
@@ -108,11 +113,11 @@
         },
 
         mounted() {
-            if(this.width) {
+            if (this.width) {
                 this.style = this.style + 'width: ' + this.width + 'px;';
             }
 
-            if(this.height) {
+            if (this.height) {
                 this.style = this.style + 'height: ' + this.height + 'px;';
             }
         }
@@ -134,10 +139,10 @@
 
     .v-modal-wrapper {
         width:  100%;
-        height: 100%;
 
         .v-modal-content {
             margin:             0px auto;
+            margin-bottom:      5%;
             margin-top:         5%;
             width:              50%;
             background-color:   #fff;
@@ -184,6 +189,10 @@
                 padding-top:    0px;
             }
         }
+    }
+
+    .v-modal-overflow-hidden {
+        overflow: hidden !important;
     }
 
     /* Modal transition styles */
