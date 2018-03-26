@@ -46,7 +46,7 @@ export default {
                 if (modalNames.constructor === Array) {
                     modalNames.forEach(modalName => {
                         var ind = this.shownModals.indexOf(modalName);
-                        this.modals.splice(ind, 1);
+                        this.shownModals.splice(ind, 1);
                     });
                 } else {
                     var ind = this.shownModals.indexOf(modalNames);
