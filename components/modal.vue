@@ -74,6 +74,12 @@
         watch: {
             modals() {
                 this.showModal();
+            },
+
+            show(val) {
+                if (val && this.onShow) {
+                    this.onShow();
+                }
             }
         },
 
@@ -91,7 +97,6 @@
                     document.body.classList.add('v-modal-overflow-hidden');
 
                     this.centerModal();
-                    if (this.onShow) { this.onShow() }
                 }
             },
 
