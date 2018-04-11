@@ -43,6 +43,9 @@ export default {
              * @return void
              */
             hide(modalNames) {
+                /* Removes the scroll lock */
+                document.body.classList.remove('v-modal-overflow-hidden');
+
                 if (modalNames.constructor === Array) {
                     modalNames.forEach(modalName => {
                         var ind = this.shownModals.indexOf(modalName);
