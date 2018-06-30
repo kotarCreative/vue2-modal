@@ -1,17 +1,17 @@
 <template>
     <transition name="v-modal">
         <div
-            @click="close"
-            class="v-modal-mask"
+            @click.stop="close"
+            class="v-modal__mask"
             v-if="show">
-            <div class="v-modal-wrapper" :style="theme">
-                <div @click.stop class="v-modal-content" :class="size" :id="id" :style="style">
-                    <div class="v-modal-panel">
-                        <div class="v-modal-heading">
-                            <div class="v-modal-title"><slot name="header"></slot></div>
-                            <span class="close-btn" @click="close">&times;</span>
+            <div class="v-modal__wrapper" :style="theme">
+                <div @click.stop class="v-modal__content" :class="size" :id="id" :style="style">
+                    <div class="v-modal__panel">
+                        <div class="v-modal__heading">
+                            <div class="v-modal__title"><slot name="header"></slot></div>
+                            <span class="v-modal__close-btn" @click="close">&times;</span>
                         </div>
-                        <div class="v-modal-body">
+                        <div class="v-modal__body">
                             <slot></slot>
                         </div>
                     </div>
@@ -85,16 +85,16 @@
 
         methods: {
             close () {
-                document.body.classList.remove('v-modal-overflow-hidden');
                 this.$modals.hide(this.name);
                 if (this.onClose) { this.onClose() }
                 this.$emit('close-modal', this.name);
+                document.body.classList.remove('v-modal__no-scroll');
             },
 
             showModal() {
                 this.show = this.$modals.isActive(this.name);
                 if (this.show) {
-                    document.body.classList.add('v-modal-overflow-hidden');
+                    document.body.classList.add('v-modal__no-scroll');
 
                     this.centerModal();
                 }
@@ -130,27 +130,31 @@
 </script>
 
 <style lang="scss">
-    .v-modal-mask {
-        position:           fixed;
-        z-index:            9998;
-        top:                0;
-        left:               0;
-        width:              100%;
-        height:             100%;
-        background-color:   rgba(0, 0, 0, .5);
-        transition:         opacity .3s ease;
-        overflow-y:         scroll;
-    }
+    $pkgName: 'v-modal';
 
-    .v-modal-wrapper {
-        width:  100%;
+    .#{$pkgName} {
+        &__mask {
+            position:           fixed;
+            z-index:            9998;
+            top:                0;
+            left:               0;
+            width:              100%;
+            height:             100%;
+            background-color:   rgba(0, 0, 0, .5);
+            transition:         opacity .3s ease;
+        }
 
-        .v-modal-content {
+        &__wrapper {
+            width: 100%;
+        }
+
+        &__content {
             margin:             0px auto;
             margin-bottom:      5%;
             margin-top:         5%;
             width:              50%;
             background-color:   #fff;
+            transition:         all 0.5s ease;
 
             &.lg {
                 width: 70%;
@@ -163,59 +167,62 @@
             &.sm {
                 width: 25%;
             }
+        }
 
-            transition: all 0.5s ease;
+        &__heading {
+            padding:        20px;
+            display:        flex;
+            align-items:    center;
 
-            .v-modal-heading {
-                position:   relative;
-                overflow:   hidden;
-                padding:    20px;
-
-                .v-modal-title {
-                    display: inline-block;
-
-                    h1, h2, h3, h4, h5 {
-                        padding:    0px;
-                        margin:     0px;
-                    }
-                }
-
-                .close-btn {
-                    float: right;
-                    font-size: 20px;
-                    line-height: 22px;
-                    cursor: pointer;
-                    font-weight: 700;
+            .#{$pkgName}__title {
+                h1, h2, h3, h4, h5 {
+                    padding:    0px;
+                    margin:     0px;
                 }
             }
 
-            .v-modal-body {
-                padding:        60px;
-                padding-top:    0px;
+            .#{$pkgName}__close-btn {
+                margin-left:    auto;
+                font-size:      20px;
+                line-height:    22px;
+                cursor:         pointer;
+                font-weight:    700;
+            }
+        }
+
+        &__body {
+            padding:        20px;
+            padding-top:    0px;
+        }
+
+        &__no-scroll {
+            overflow: hidden;
+        }
+
+        /* Modal transition styles */
+
+        &-enter {
+            opacity: 0;
+
+            .#{$pkgName}__content {
+                web-kit-transform:  scale(2);
+                moz-transform:      scale(2);
+                ms-transform:       scale(2);
+                o-transform:        scale(2);
+                transform:          scale(2);
+            }
+        }
+
+        &-leave-active {
+            opacity: 0;
+
+            .#{$pkgName}__content {
+                web-kit-transform:  scale(2);
+                moz-transform:      scale(2);
+                ms-transform:       scale(2);
+                o-transform:        scale(2);
+                transform:          scale(2);
             }
         }
     }
-
-    .v-modal-overflow-hidden {
-        overflow: hidden !important;
-    }
-
-    /* Modal transition styles */
-
-    .v-modal-enter {
-        opacity: 0;
-    }
-
-    .v-modal-leave-active {
-        opacity: 0;
-    }
-
-    .v-modal-enter .v-modal-content, .v-modal-leave-active .v-modal-content {
-        web-kit-transform:  scale(2);
-        moz-transform:      scale(2);
-        ms-transform:       scale(2);
-        o-transform:        scale(2);
-        transform:          scale(2);
-    }
-
 </style>
