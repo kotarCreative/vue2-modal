@@ -42,5 +42,18 @@ There are life cycle hooks that can be utilized to run actions at different poin
 - onClose: Runs right before the close modal event is emitted
 - onShow: Runs after the modal have been rerendered to the screen.
 
+### Props
+
+| Prop           | Description                                         | Value                                 |
+|--------------------------------------------------------------------------------------------------------------|
+| name           | The name of the modal. Used to show and hide modal. | String                                |
+| size           | The size of the modal                               | sm, md, lg                            |
+| width          | A fixed width for the modal                         | Number                                |
+| height         | A fixed height for the modal                        | Number                                |
+| theme          | Css styles to be applied directly                   | String                                |
+| transitionName | The style of transition                             | zoom-in, zoom-out, fade, slide-in-top |
+| onClose        | A function that runs when a modal closes            | Function                              |
+| onShow         | A function that runs when a modal is shown          | Function                              |
+
 ## License
 This project is covered under the MIT License. Feel free to use it wherever you like.

@@ -1,5 +1,5 @@
 <template>
-    <transition name="v-modal">
+    <transition :name="'v-modal-' + transitionName">
         <div
             @click.stop="close"
             class="v-modal__mask"
@@ -49,6 +49,17 @@
             theme: {
                 type: String,
                 required: false
+            },
+
+            transitionName: {
+                type: String,
+                default: 'zoom-out',
+                validator(val) {
+                    return val === 'zoom-out' ||
+                           val === 'zoom-in' ||
+                           val === 'fade' ||
+                           val === 'slide-in-top';
+                }
             },
 
             onClose: {
@@ -201,7 +212,8 @@
 
         /* Modal transition styles */
 
-        &-enter {
+        // Zoom Out
+        &-zoom-out-enter {
             opacity: 0;
 
             .#{$pkgName}__content {
@@ -213,7 +225,7 @@
             }
         }
 
-        &-leave-active {
+        &-zoom-out-leave-active {
             opacity: 0;
 
             .#{$pkgName}__content {
@@ -222,6 +234,65 @@
                 ms-transform:       scale(2);
                 o-transform:        scale(2);
                 transform:          scale(2);
+            }
+        }
+
+        // Zoom In
+        &-zoom-in-enter {
+            opacity: 0;
+
+            .#{$pkgName}__content {
+                web-kit-transform:  scale(0.5);
+                moz-transform:      scale(0.5);
+                ms-transform:       scale(0.5);
+                o-transform:        scale(0.5);
+                transform:          scale(0.5);
+            }
+        }
+
+        &-zoom-in-leave-active {
+            opacity: 0;
+
+            .#{$pkgName}__content {
+                web-kit-transform:  scale(0.5);
+                moz-transform:      scale(0.5);
+                ms-transform:       scale(0.5);
+                o-transform:        scale(0.5);
+                transform:          scale(0.5);
+            }
+        }
+
+        // Fade
+        &-fade-enter {
+            opacity: 0;
+        }
+
+        &-fade-leave-active {
+            opacity: 0;
+        }
+
+        // Slide in top
+        &-slide-in-top-enter {
+            opacity: 0;
+
+            .#{$pkgName}__content {
+                web-kit-transform:  translateY(-100px);
+                moz-transform:      translateY(-100px);
+                ms-transform:       translateY(-100px);
+                o-transform:        translateY(-100px);
+                transform:          translateY(-100px);
+            }
+        }
+
+        &-slide-in-top-leave-active {
+            opacity: 0;
+
+            .#{$pkgName}__content {
+                web-kit-transform:  translateY(-100px);
+                moz-transform:      translateY(-100px);
+                ms-transform:       translateY(-100px);
+                o-transform:        translateY(-100px);
+                transform:          translateY(-100px);
             }
         }
     }
