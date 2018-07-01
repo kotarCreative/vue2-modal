@@ -153,6 +153,7 @@
             height:             100%;
             background-color:   rgba(0, 0, 0, .5);
             transition:         opacity .3s ease;
+            overflow-y:         scroll;
         }
 
         &__wrapper {
