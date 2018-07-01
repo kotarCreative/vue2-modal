@@ -45,7 +45,7 @@ There are life cycle hooks that can be utilized to run actions at different poin
 ### Props
 
 | Prop           | Description                                         | Value                                 |
-|--------------------------------------------------------------------------------------------------------------|
+|----------------|-----------------------------------------------------|---------------------------------------|
 | name           | The name of the modal. Used to show and hide modal. | String                                |
 | size           | The size of the modal                               | sm, md, lg                            |
 | width          | A fixed width for the modal                         | Number                                |
