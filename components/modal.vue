@@ -142,6 +142,7 @@
 
 <style lang="scss">
     $pkgName: 'v-modal';
+    $mobileSize: '600px';
 
     .#{$pkgName} {
         &__mask {
@@ -295,6 +296,13 @@
                 o-transform:        translateY(-100px);
                 transform:          translateY(-100px);
             }
+        }
+    }
+
+    @media screen and (max-width: $mobileSize) {
+        .#{$pkgName}__content {
+            width:      100%;
+            margin-top: 0px;
         }
     }
 </style>
