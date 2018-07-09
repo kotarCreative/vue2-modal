@@ -1,6 +1,6 @@
 {
   "name": "vue2-modal",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "An easy to use vue 2 modal component for showing and hiding modals",
   "main": "index.js",
   "scripts": {
