@@ -1,7 +1,7 @@
 <template>
     <transition :name="'v-modal-' + transitionName">
         <div
-            @click.stop="close"
+            @click.stop="close('outer')"
             class="v-modal__mask"
             v-if="show">
             <div class="v-modal__wrapper" :style="theme">
@@ -9,7 +9,7 @@
                     <div class="v-modal__panel">
                         <div class="v-modal__heading">
                             <div class="v-modal__title"><slot name="header"></slot></div>
-                            <span class="v-modal__close-btn" @click="close">&times;</span>
+                            <span class="v-modal__close-btn" @click="close('inner')">&times;</span>
                         </div>
                         <div class="v-modal__body">
                             <slot></slot>
@@ -27,12 +27,23 @@
 
         props: {
             /**
+             * Disables clicking grey space around modal
+             * to close the modal.
+             *
+             * @type {Boolean|null}
+             */
+            dismissable: {
+                type: Boolean,
+                default: true
+            },
+
+            /**
              * Defines a static height for the modal.
              *
-             * @type {String|null}
+             * @type {String|Number|null}
              */
             height: {
-                type: String,
+                type: [ String, Number ],
                 required: false
             },
 
@@ -113,10 +124,10 @@
             /**
              * Defines a static width for the modal.
              *
-             * @type {String|null}
+             * @type {String|Number|null}
              */
             width: {
-                type: String,
+                type: [ String, Number ],
                 required: false
             },
         },
@@ -143,9 +154,11 @@
         },
 
         methods: {
-            close () {
+            close (location) {
+                if (location === 'outer' && !this.dismissable) return;
+
                 this.$modals.hide(this.name);
-                if (this.onClose) { this.onClose() }
+                if (this.onClose) this.onClose();
                 this.$emit('close-modal', this.name);
                 document.body.classList.remove('v-modal__no-scroll');
             },
