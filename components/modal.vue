@@ -26,31 +26,79 @@
         name: 'v-modal',
 
         props: {
-            name: {
-                type: String,
-                required: true
-            },
-
-            size: {
-                type: String,
-                required: false
-            },
-
-            width: {
-                type: String,
-                required: false
-            },
-
+            /**
+             * Defines a static height for the modal.
+             *
+             * @type {String|null}
+             */
             height: {
                 type: String,
                 required: false
             },
 
+            /**
+             * Lifecycle hook that runs after a modal closes.
+             *
+             * @type {Function|null}
+             */
+            onClose: {
+                type: Function,
+                required: false
+            },
+
+            /**
+             * Lifecycle hook that runs after a modal opens.
+             *
+             * @type {Function|null}
+             */
+            onShow: {
+                type: Function,
+                required: false
+            },
+
+            /**
+             * Unique identifier for modal.
+             *
+             * @type {String}
+             */
+            name: {
+                type: String,
+                required: true
+            },
+
+            /**
+             * Defined sizing for modal.
+             * Can be defined as sm, md or lg
+             *
+             * @type {String|null}
+             */
+            size: {
+                type: String,
+                required: false,
+                validator(val) {
+                    return val === 'sm' ||
+                        val === 'md' ||
+                        val === 'lg';
+                }
+            },
+
+            /**
+             * Custom css styling to apply to modal.
+             *
+             * @type {String|null}
+             */
             theme: {
                 type: String,
                 required: false
             },
 
+            /**
+             * Defines the transition that occurs when
+             * a modal enters the screen. Can be defined
+             * as zoom-out, zoom-in, fade and slide-in-top.
+             *
+             * @type {String|null}
+             */
             transitionName: {
                 type: String,
                 default: 'zoom-out',
@@ -62,15 +110,15 @@
                 }
             },
 
-            onClose: {
-                type: Function,
+            /**
+             * Defines a static width for the modal.
+             *
+             * @type {String|null}
+             */
+            width: {
+                type: String,
                 required: false
             },
-
-            onShow: {
-                type: Function,
-                required: false
-            }
         },
 
         data() {
