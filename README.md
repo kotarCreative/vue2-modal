@@ -54,7 +54,7 @@ There are life cycle hooks that can be utilized to run actions at different poin
 | transitionName | The style of transition                             | zoom-in, zoom-out, fade, slide-in-top |
 | onClose        | A function that runs when a modal closes            | Function                              |
 | onShow         | A function that runs when a modal is shown          | Function                              |
-| dismissable    | Disables closing a modal by clicking outside of it | Boolean |
+| outerClose    | Disables closing a modal by clicking outside of it | Boolean |
 
 ## License
 This project is covered under the MIT License. Feel free to use it wherever you like.

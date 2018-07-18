@@ -27,17 +27,6 @@
 
         props: {
             /**
-             * Disables clicking grey space around modal
-             * to close the modal.
-             *
-             * @type {Boolean|null}
-             */
-            dismissable: {
-                type: Boolean,
-                default: true
-            },
-
-            /**
              * Defines a static height for the modal.
              *
              * @type {String|Number|null}
@@ -65,6 +54,17 @@
             onShow: {
                 type: Function,
                 required: false
+            },
+
+            /**
+             * Disables clicking grey space around modal
+             * to close the modal.
+             *
+             * @type {Boolean|null}
+             */
+            outerClose: {
+                type: Boolean,
+                default: true
             },
 
             /**
@@ -155,7 +155,7 @@
 
         methods: {
             close (location) {
-                if (location === 'outer' && !this.dismissable) return;
+                if (location === 'outer' && !this.outerClose) return;
 
                 this.$modals.hide(this.name);
                 if (this.onClose) this.onClose();
