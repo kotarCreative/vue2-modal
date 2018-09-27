@@ -1,7 +1,7 @@
-import Modal from './components/modal.vue'
+import Modal from './components/modal.vue';
 
 export default {
-    install (Vue, options) {
+    install(Vue, options) {
         Vue.component('vue-modal', Modal);
 
         Vue.prototype.$modals = {
@@ -29,7 +29,7 @@ export default {
              */
             show(modalName) {
                 this.shownModals.indexOf(modalName) == -1 ? this.shownModals.push(modalName) : null;
-                if(options && options.logging) {
+                if (options && options.logging) {
                     console.log('Show modal: ' + modalName);
                     console.log('All modals showing: ', this.shownModals);
                 }
@@ -55,7 +55,7 @@ export default {
                     var ind = this.shownModals.indexOf(modalNames);
                     this.shownModals.splice(ind, 1);
                 }
-                if(options && options.logging) {
+                if (options && options.logging) {
                     console.log('Removed modal: ' + modalNames);
                     console.log('All shown modals: ', this.shownModals);
                 }
