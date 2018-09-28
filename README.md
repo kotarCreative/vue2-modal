@@ -31,7 +31,7 @@ Vue modals contains a very simple API for interacting with modals.
 #### Styling
 There are some built in stylings that can be changed or a manual theme can also be applied.
 There are three props which are used to change the size of the modals themselves.
-1. size (sm, md, lg)
+1. size (xsm, sm, md, lg, xlg)
 2. width
 3. height
 
@@ -47,7 +47,7 @@ There are life cycle hooks that can be utilized to run actions at different poin
 | Prop           | Description                                         | Value                                 |
 |----------------|-----------------------------------------------------|---------------------------------------|
 | name           | The name of the modal. Used to show and hide modal. | String                                |
-| size           | The size of the modal                               | sm, md, lg                            |
+| size           | The size of the modal                               | xsm, sm, md, lg, xlg                  |
 | width          | A fixed width for the modal                         | Number                                |
 | height         | A fixed height for the modal                        | Number                                |
 | theme          | Css styles to be applied directly                   | String                                |

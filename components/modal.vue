@@ -79,7 +79,7 @@
 
             /**
              * Defined sizing for modal.
-             * Can be defined as sm, md or lg
+             * Can be defined as xsm, sm, md, lg, or xlg
              *
              * @type {String|null}
              */
@@ -87,9 +87,11 @@
                 type: String,
                 required: false,
                 validator(val) {
-                    return val === 'sm' ||
+                    return val === 'xsm' ||
+                        val === 'sm' ||
                         val === 'md' ||
-                        val === 'lg';
+                        val === 'lg' ||
+                        val === 'xlg';
                 }
             },
 
@@ -230,6 +232,10 @@
             background-color:   #fff;
             transition:         all 0.5s ease;
 
+            &.xlg {
+                width: 85%;
+            }
+
             &.lg {
                 width: 70%;
             }
@@ -240,6 +246,10 @@
 
             &.sm {
                 width: 25%;
+            }
+
+            &.xsm {
+                width: 15%;
             }
         }
 
