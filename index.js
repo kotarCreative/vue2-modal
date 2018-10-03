@@ -1,6 +1,6 @@
 import Modal from './components/modal.vue';
 
-let install = function (Vue, options) {
+const install = function (Vue, options) {
     Vue.component('vue-modal', Modal);
 
     Vue.prototype.$modals = {
