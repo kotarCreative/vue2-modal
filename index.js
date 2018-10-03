@@ -45,9 +45,10 @@ const install = function (Vue, options) {
             document.body.classList.remove('v-modal__no-scroll');
 
             if (modalNames.constructor === Array) {
+                var _this = this;
                 modalNames.forEach(function (modalName) {
-                    var ind = this.shownModals.indexOf(modalName);
-                    this.shownModals.splice(ind, 1);
+                    var ind = _this.shownModals.indexOf(modalName);
+                    _this.shownModals.splice(ind, 1);
                 });
             } else {
                 var ind = this.shownModals.indexOf(modalNames);
