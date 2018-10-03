@@ -25,7 +25,7 @@ let install = function (Vue, options) {
          *
          * @return void
          */
-        show: function show(modalName) {
+        show: function (modalName) {
             this.shownModals.indexOf(modalName) == -1 ? this.shownModals.push(modalName) : null;
             if (options && options.logging) {
                 console.log('Show modal: ' + modalName);
@@ -40,7 +40,7 @@ let install = function (Vue, options) {
          *
          * @return void
          */
-        hide: function hide(modalNames) {
+        hide: function (modalNames) {
             /* Removes the scroll lock */
             document.body.classList.remove('v-modal__no-scroll');
 
@@ -66,7 +66,7 @@ let install = function (Vue, options) {
          *
          * @return boolean
          */
-        isActive: function isActive(modalName) {
+        isActive: function (modalName) {
             return this.shownModals.indexOf(modalName) > -1;
         },
 
@@ -75,7 +75,7 @@ let install = function (Vue, options) {
          *
          * @return array
          */
-        shown: function shown() {
+        shown: function () {
             return this.shownModals;
         },
 
@@ -84,7 +84,7 @@ let install = function (Vue, options) {
          *
          * @return array
          */
-        all: function all() {
+        all: function () {
             return this.allModals;
         },
 
@@ -93,7 +93,7 @@ let install = function (Vue, options) {
          *
          * @return null
          */
-        mount: function mount(name) {
+        mount: function (name) {
             if (this.allModals.indexOf(name) == -1) {
                 this.allModals.push(name);
             } else if (options && options.logging) {
