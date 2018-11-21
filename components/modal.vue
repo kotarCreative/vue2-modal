@@ -9,7 +9,7 @@
                     <div class="v-modal__panel">
                         <div class="v-modal__heading">
                             <div class="v-modal__title"><slot name="header"></slot></div>
-                            <span class="v-modal__close-btn" @click="close('inner')">&times;</span>
+                            <span class="v-modal__close-btn" @click="close('inner')" v-if="!hideCloseBtn">&times;</span>
                         </div>
                         <div class="v-modal__body">
                             <slot></slot>
@@ -34,6 +34,16 @@
             height: {
                 type: [ String, Number ],
                 required: false
+            },
+
+            /**
+             * Hides the close button.
+             *
+             * @type Boolean
+             */
+            hideCloseBtn: {
+                type: Boolean,
+                default: false
             },
 
             /**
