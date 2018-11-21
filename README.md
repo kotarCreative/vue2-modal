@@ -50,11 +50,12 @@ There are life cycle hooks that can be utilized to run actions at different poin
 | size           | The size of the modal                               | xsm, sm, md, lg, xlg                  |
 | width          | A fixed width for the modal                         | Number                                |
 | height         | A fixed height for the modal                        | Number                                |
+| hideCloseBtn   | Hides close button                                  | Boolean                               |
 | theme          | Css styles to be applied directly                   | String                                |
 | transitionName | The style of transition                             | zoom-in, zoom-out, fade, slide-in-top |
 | onClose        | A function that runs when a modal closes            | Function                              |
 | onShow         | A function that runs when a modal is shown          | Function                              |
-| outerClose    | Disables closing a modal by clicking outside of it | Boolean |
+| outerClose     | Disables closing a modal by clicking outside of it  | Boolean                               |
 
 ## License
 This project is covered under the MIT License. Feel free to use it wherever you like.
