@@ -1,11 +1,11 @@
 <template>
     <transition :name="'v-modal-' + transitionName">
         <div
-            @click.stop="close('outer')"
+            @click.self="close('outer')"
             class="v-modal__mask"
             v-if="show">
-            <div class="v-modal__wrapper" :style="theme">
-                <div @click.stop class="v-modal__content" :class="size" :id="id" :style="style">
+            <div @click.self="close('outer')" class="v-modal__wrapper" :style="theme">
+                <div class="v-modal__content" :class="size" :id="id" :style="style">
                     <div class="v-modal__panel">
                         <div class="v-modal__heading">
                             <div class="v-modal__title"><slot name="header"></slot></div>
