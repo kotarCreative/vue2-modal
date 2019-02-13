@@ -4,7 +4,7 @@
             @click.self="close('outer')"
             class="v-modal__mask"
             v-if="show">
-            <div class="v-modal__wrapper" :style="theme">
+            <div @click.self="close('outer')" class="v-modal__wrapper" :style="theme">
                 <div class="v-modal__content" :class="size" :id="id" :style="style">
                     <div class="v-modal__panel">
                         <div class="v-modal__heading">
@@ -167,6 +167,7 @@
 
         methods: {
             close (location) {
+                console.log(location);
                 if (location === 'outer' && !this.outerClose) return;
 
                 this.$modals.hide(this.name);
