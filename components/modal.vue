@@ -167,7 +167,6 @@
 
         methods: {
             close (location) {
-                console.log(location);
                 if (location === 'outer' && !this.outerClose) return;
 
                 this.$modals.hide(this.name);
