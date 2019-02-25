@@ -96,7 +96,7 @@
             size: {
                 type: String,
                 required: false,
-                validator(val) {
+                validator: function(val) {
                     return val === 'xsm' ||
                         val === 'sm' ||
                         val === 'md' ||
@@ -125,7 +125,7 @@
             transitionName: {
                 type: String,
                 default: 'zoom-out',
-                validator(val) {
+                validator: function(val) {
                     return val === 'zoom-out' ||
                            val === 'zoom-in' ||
                            val === 'fade' ||
@@ -144,7 +144,7 @@
             },
         },
 
-        data() {
+        data: function() {
             return {
                 modals: null,
                 show: false,
@@ -154,11 +154,11 @@
         },
 
         watch: {
-            modals() {
+            modals: function() {
                 this.showModal();
             },
 
-            show(val) {
+            show: function(val) {
                 if (val && this.onShow) {
                     this.onShow();
                 }
@@ -166,7 +166,7 @@
         },
 
         methods: {
-            close (location) {
+            close: function(location) {
                 if (location === 'outer' && !this.outerClose) return;
 
                 this.$modals.hide(this.name);
@@ -175,7 +175,7 @@
                 document.body.classList.remove('v-modal__no-scroll');
             },
 
-            showModal() {
+            showModal: function() {
                 this.show = this.$modals.isActive(this.name);
                 if (this.show) {
                     document.body.classList.add('v-modal__no-scroll');
@@ -184,7 +184,7 @@
                 }
             },
 
-            centerModal() {
+            centerModal: function() {
                 var modal = document.getElementById(this.id);
 
                 if (modal) {
@@ -194,14 +194,14 @@
             }
         },
 
-        created() {
+        created: function() {
             this.modals = this.$modals.shown();
 
             this.$modals.mount(this.name);
             this.id = 'v-modal-' + this.$modals.all().indexOf(this.name);
         },
 
-        mounted() {
+        mounted: function() {
             if (this.width) {
                 this.style = this.style + 'width: ' + this.width + 'px;';
             }

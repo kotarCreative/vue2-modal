@@ -52,7 +52,9 @@ const install = function (Vue, options) {
                 });
             } else {
                 var ind = this.shownModals.indexOf(modalNames);
-                this.shownModals.splice(ind, 1);
+		    if (ind > -1) {
+                    this.shownModals.splice(ind, 1);
+                }
             }
             if (options && options.logging) {
                 console.log('Removed modal: ' + modalNames);
