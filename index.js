@@ -52,7 +52,7 @@ const install = function (Vue, options) {
                 });
             } else {
                 var ind = this.shownModals.indexOf(modalNames);
-		if (ind > -1) {
+		    if (ind > -1) {
                     this.shownModals.splice(ind, 1);
                 }
             }
